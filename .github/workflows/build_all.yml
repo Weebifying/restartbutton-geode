@@ -46,6 +46,8 @@ jobs:
     steps:
       - uses: geode-sdk/build-geode-mod/combine@main
         id: build
+        with:
+          build-config: RelWithDebInfo
 
       - uses: actions/upload-artifact@v3
         with:
