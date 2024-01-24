@@ -28,7 +28,7 @@ class $modify(AltMenuLayer, MenuLayer) {
 			auto cls_btn = CCMenuItemSpriteExtra::create(
 				cls_spr, 
 				this, 
-				menu_selector(AltMenuLayer::onRestart));
+				menu_selector(MenuLayer::onClose));
 			cls_btn->setContentSize(CCSize(32.2, 33.25));
 			cls_btn->setPosition(16.1, 16.625);
 			cls_menu->addChild(cls_btn);
