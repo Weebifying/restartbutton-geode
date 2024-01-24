@@ -9,9 +9,7 @@ class $modify(AltMenuLayer, MenuLayer) {
 
 		auto winSize = CCDirector::get()->getWinSize();
 
-		auto res_menu = CCMenu::create();
-		res_menu->setPosition(0, 0);
-		this->addChild(res_menu);
+		auto res_menu = this->getChildByID("close-menu");
 
 		auto spr = CCSprite::createWithSpriteFrameName("GJ_updateBtn_001.png");
 		spr->setScale(0.7);
@@ -20,7 +18,7 @@ class $modify(AltMenuLayer, MenuLayer) {
 			this, 
 			menu_selector(AltMenuLayer::onRestart));
 		res_btn->setContentSize(CCSize(32.2, 33.25));
-		res_btn->setPosition(18, winSize.height - 54);
+		res_btn->setPosition(16.1, -19.375);
 		res_menu->addChild(res_btn);
 
 		return true;
