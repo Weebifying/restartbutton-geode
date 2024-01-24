@@ -8,5 +8,19 @@
 	"id": "weebify.restartbtn",
 	"name": "Restart Button",
 	"developer": "Weebify",
-	"description": "Adds a button to quickly restart the game"
+	"description": "Adds a button to quickly restart the game",
+	"settings": {
+		"size": {
+            "name": "Size",
+			"description": "How big the buttons should be.",
+            "type": "float",
+            "default": 1,
+            "min": 1,
+            "max": 2,
+            "control": {
+                "slider": true,
+				"slider-step": 0.01
+			}
+		}
+	}
 }

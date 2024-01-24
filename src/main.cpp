@@ -1,5 +1,6 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/MenuLayer.hpp>
+#include <Geode/loader/SettingEvent.hpp>
 using namespace geode::prelude;
 
 
@@ -9,7 +10,7 @@ class $modify(AltMenuLayer, MenuLayer) {
 
 		#if defined(GEODE_IS_ANDROID)
 			auto res_menu = CCMenu::create();
-			res_menu->setPosition(101.9, 302);
+			res_menu->setID("close-menu");
 			res_menu->setContentSize(CCSize(200, 33.25));
 			res_menu->ignoreAnchorPointForPosition(false);
 			this->addChild(res_menu);
@@ -27,6 +28,9 @@ class $modify(AltMenuLayer, MenuLayer) {
 			auto res_menu = this->getChildByID("close-menu");
 		#endif
 
+		res_menu->setAnchorPoint(CCPoint(0, 1));
+		res_menu->setPosition(1.9, 318.625);
+
 		auto res_spr = CCSprite::createWithSpriteFrameName("GJ_updateBtn_001.png");
 		res_spr->setScale(0.7);
 		auto res_btn = CCMenuItemSpriteExtra::create(
@@ -36,6 +40,9 @@ class $modify(AltMenuLayer, MenuLayer) {
 		res_btn->setContentSize(CCSize(32.2, 33.25));
 		res_btn->setPosition(16.1, -19.375);
 		res_menu->addChild(res_btn);
+
+		auto scale = Mod::get()->getSettingValue<double>("size");
+		res_menu->setScale(scale);
 
 		return true;
 	}
@@ -51,6 +58,5 @@ class $modify(AltMenuLayer, MenuLayer) {
 				}
 			}
 		);
-
 	}
 };
