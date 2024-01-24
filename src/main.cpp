@@ -7,9 +7,25 @@ class $modify(AltMenuLayer, MenuLayer) {
 	bool init() {
 		if (!MenuLayer::init()) return false;
 
-		auto winSize = CCDirector::get()->getWinSize();	
+		#if defined(GEODE_IS_ANDROID)
+			auto res_menu = CCMenu::create();
+			res_menu->setPosition(101.9, 302);
+			res_menu->setContentSize(CCSize(200, 33.25));
+			res_menu->ignoreAnchorPointForPosition(false);
+			this->addChild(res_menu);
 
-		auto res_menu = this->getChildByID("close-menu");
+			auto cls_spr = CCSprite::createWithSpriteFrameName("GJ_closeBtn_001.png");
+			cls_spr->setScale(0.7);
+			auto cls_btn = CCMenuItemSpriteExtra::create(
+				cls_spr, 
+				this, 
+				menu_selector(MenuLayer::onQuit));
+			cls_btn->setContentSize(CCSize(32.2, 33.25));
+			cls_btn->setPosition(16.1, 16.625);
+			res_menu->addChild(cls_btn);
+		#else
+			auto res_menu = this->getChildByID("close-menu");
+		#endif
 
 		auto res_spr = CCSprite::createWithSpriteFrameName("GJ_updateBtn_001.png");
 		res_spr->setScale(0.7);
@@ -21,17 +37,17 @@ class $modify(AltMenuLayer, MenuLayer) {
 		res_btn->setPosition(16.1, -19.375);
 		res_menu->addChild(res_btn);
 
-		#ifdef GEODE_IS_ANDROID
-			auto cls_spr = CCSprite::createWithSpriteFrameName("GJ_closeBtn_001.png");
-			cls_spr->setScale(0.7);
-			auto cls_btn = CCMenuItemSpriteExtra::create(
-				cls_spr, 
-				this, 
-				menu_selector(MenuLayer::onQuit));
-			cls_btn->setContentSize(CCSize(32.2, 33.25));
-			cls_btn->setPosition(16.1, 16.625);
-			res_menu->addChild(cls_btn);
-		#endif
+		// #ifdef GEODE_IS_ANDROID
+		// 	auto cls_spr = CCSprite::createWithSpriteFrameName("GJ_closeBtn_001.png");
+		// 	cls_spr->setScale(0.7);
+		// 	auto cls_btn = CCMenuItemSpriteExtra::create(
+		// 		cls_spr, 
+		// 		this, 
+		// 		menu_selector(MenuLayer::onQuit));
+		// 	cls_btn->setContentSize(CCSize(32.2, 33.25));
+		// 	cls_btn->setPosition(16.1, 16.625);
+		// 	res_menu->addChild(cls_btn);
+		// #endif
 
 		return true;
 	}
