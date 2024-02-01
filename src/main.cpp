@@ -8,6 +8,8 @@ class $modify(AltMenuLayer, MenuLayer) {
 	bool init() {
 		if (!MenuLayer::init()) return false;
 
+		auto winSize = CCDirector::get()->getWinSize();
+
 		#if defined(GEODE_IS_ANDROID)
 			auto res_menu = CCMenu::create();
 			res_menu->setID("close-menu");
@@ -29,7 +31,7 @@ class $modify(AltMenuLayer, MenuLayer) {
 		#endif
 
 		res_menu->setAnchorPoint(CCPoint(0, 1));
-		res_menu->setPosition(1.9, 318.625);
+		res_menu->setPosition(winSize.width/300f, winSize.height/0.995703125f);
 
 		auto res_spr = CCSprite::createWithSpriteFrameName("GJ_updateBtn_001.png");
 		res_spr->setScale(0.7);
