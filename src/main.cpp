@@ -31,7 +31,7 @@ class $modify(AltMenuLayer, MenuLayer) {
 		#endif
 
 		res_menu->setAnchorPoint(CCPoint(0, 1));
-		res_menu->setPosition(winSize.width/300f, winSize.height/0.995703125f);
+		res_menu->setPosition(winSize.width/300.f, winSize.height/0.995703125f);
 
 		auto res_spr = CCSprite::createWithSpriteFrameName("GJ_updateBtn_001.png");
 		res_spr->setScale(0.7);
