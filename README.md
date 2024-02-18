@@ -2,6 +2,7 @@
 
 This is where she makes a mod.
 
-Adds a restart game button in your main menu
-Also adds a close button if you are on android (like on pc)
-You can change the size of the buttons in the mod settings menu
+Adds a restart game button, a texture reload button and an exit button in the main menu
+![Showcase](resources/image.png)
+
+You can change the size of the buttons, as well as toggling them in the mod settings menu
