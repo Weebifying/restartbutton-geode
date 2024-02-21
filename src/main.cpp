@@ -1,8 +1,10 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/MenuLayer.hpp>
+#include <Geode/modify/CCKeyboardDispatcher.hpp>
 using namespace geode::prelude;
 
 bool reload = false;
+
 
 class $modify(AltMenuLayer, MenuLayer) {
 	static CCScene* scene(bool p0) {
@@ -14,7 +16,7 @@ class $modify(AltMenuLayer, MenuLayer) {
 	}
 	bool init() {
 		if (!MenuLayer::init()) return false;
-		log::info("menulayer init!!");
+
 		auto winSize = CCDirector::get()->getWinSize();
 
 		if (!this->getChildByID("close-menu")) {
@@ -110,5 +112,20 @@ class $modify(AltMenuLayer, MenuLayer) {
 				}
 			}
 		);
+	}
+};
+
+
+class $modify(CCKeyboardDispatcher) {
+	bool dispatchKeyboardMSG(cocos2d::enumKeyCodes key, bool down, bool repeat) {
+
+		if (CCDirector::get()->getRunningScene()->getChildByID("MenuLayer")) {
+			if (key == enumKeyCodes::KEY_F1 && down) 
+				as<AltMenuLayer*>(CCDirector::get()->getRunningScene()->getChildByID("MenuLayer"))->onRestart(nullptr);
+			else if (key == enumKeyCodes::KEY_F2 && down)
+				as<AltMenuLayer*>(CCDirector::get()->getRunningScene()->getChildByID("MenuLayer"))->onReload(nullptr);
+		}
+
+		return CCKeyboardDispatcher::dispatchKeyboardMSG(key, down, repeat);
 	}
 };
