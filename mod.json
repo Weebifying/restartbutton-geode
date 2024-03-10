@@ -10,6 +10,8 @@
 	"name": "Restart Buttons",
 	"developer": "Weebify",
 	"description": "Adds a button to quickly restart the game (and a few more)",
+	"repository": "https://github.com/Weebifying/restartbutton-geode",
+	"tags": ["Interface", "Utility"],
 	"resources": {
 		"sprites": [
 			"resources/image.png"
