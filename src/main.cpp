@@ -3,14 +3,41 @@
 #include <Geode/modify/CCKeyboardDispatcher.hpp>
 using namespace geode::prelude;
 
-bool reload = false;
+bool isReload = false;
 
+void restart(CCObject* sender) {
+	geode::createQuickPopup(
+		"Restart Game",
+		"Are you sure you want to <cg>restart</c>?",
+		"Cancel", "Yes",
+		[](auto, bool btn2) {
+			if (btn2) {
+				utils::game::restart();
+			}
+		}
+	);
+}
+
+void reload(CCObject* sender) {
+	isReload = true;
+	geode::createQuickPopup(
+		"Reload Textures",
+		"Are you sure you want to <cj>reload textures</c>?",
+		"Cancel", "Yes",
+		[](auto, bool btn2) {
+			if (btn2) {
+				GameManager::get()->reloadAll(false, false, true);
+				
+			}
+		}
+	);
+}
 
 class $modify(AltMenuLayer, MenuLayer) {
 	static CCScene* scene(bool p0) {
-		if (!reload) return MenuLayer::scene(p0);
+		if (!isReload) return MenuLayer::scene(p0);
 		else {
-			reload = false;
+			isReload = false;
 			return MenuLayer::scene(false);
 		}
 	}
@@ -87,43 +114,33 @@ class $modify(AltMenuLayer, MenuLayer) {
 	}
 
 	void onRestart(CCObject* sender) {
-		geode::createQuickPopup(
-			"Restart Game",
-			"Are you sure you want to <cg>restart</c>?",
-			"Cancel", "Yes",
-			[](auto, bool btn2) {
-				if (btn2) {
-					utils::game::restart();
-				}
-			}
-		);
+		restart(sender);
 	}
 
 	void onReload(CCObject* sender) {
-		reload = true;
-		geode::createQuickPopup(
-			"Reload Textures",
-			"Are you sure you want to <cj>reload textures</c>?",
-			"Cancel", "Yes",
-			[](auto, bool btn2) {
-				if (btn2) {
-					GameManager::get()->reloadAll(false, false, true);
-					
-				}
-			}
-		);
+		reload(sender);
 	}
 };
 
 
 class $modify(CCKeyboardDispatcher) {
 	bool dispatchKeyboardMSG(cocos2d::enumKeyCodes key, bool down, bool repeat) {
+		auto scene = CCDirector::get()->getRunningScene();
 
-		if (CCDirector::get()->getRunningScene()->getChildByID("MenuLayer")) {
-			if (key == enumKeyCodes::KEY_F1 && down) 
-				as<AltMenuLayer*>(CCDirector::get()->getRunningScene()->getChildByID("MenuLayer"))->onRestart(nullptr);
-			else if (key == enumKeyCodes::KEY_F2 && down)
-				as<AltMenuLayer*>(CCDirector::get()->getRunningScene()->getChildByID("MenuLayer"))->onReload(nullptr);
+		if (Mod::get()->getSettingValue<bool>("keybind_anywhere")) {
+			if (!LevelEditorLayer::get()) {
+				if (key == enumKeyCodes::KEY_F1 && down)
+					restart(nullptr);
+				else if (key == enumKeyCodes::KEY_F2 && down)
+					reload(nullptr);
+			}
+		} else {
+			if (scene->getChildByID("MenuLayer")) {
+				if (key == enumKeyCodes::KEY_F1 && down)
+					restart(nullptr);
+				else if (key == enumKeyCodes::KEY_F2 && down)
+					reload(nullptr);
+			}
 		}
 
 		return CCKeyboardDispatcher::dispatchKeyboardMSG(key, down, repeat);

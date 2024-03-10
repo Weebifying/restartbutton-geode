@@ -4,7 +4,7 @@
 		"win": "2.204",
 		"android": "2.205"
 	},
-	"version": "v1.1.1",
+	"version": "v1.1.2",
 	"id": "weebify.restartbtn",
 	"name": "Restart Buttons",
 	"developer": "Weebify",
@@ -26,6 +26,12 @@
                 "slider": true,
 				"slider-step": 0.01
 			}
+		},
+		"keybind_anywhere": {
+			"name": "Keybind works anywhere",
+			"description": "...except the editor",
+			"type": "bool",
+			"default": false
 		},
 		"exit": {
 			"name": "Show Exit button",

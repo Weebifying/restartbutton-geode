@@ -1,4 +1,6 @@
 # Restart Buttons Changelog
+## v1.1.2
+- Added an option to be able to use the keybinds from anywhere except the editor
 ## v1.1.1
 - Added keybinds on Windows (F1 for restart, F2 for reload textures)
 ## v1.1.0
