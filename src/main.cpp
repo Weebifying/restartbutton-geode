@@ -5,20 +5,24 @@ using namespace geode::prelude;
 
 bool isReload = false;
 
-void restart(CCObject* sender) {
+void restart() {
+	if (CCDirector::get()->getRunningScene()->getChildByID("restart-popup")
+	|| CCDirector::get()->getRunningScene()->getChildByID("reload-popup")) return;
 	geode::createQuickPopup(
 		"Restart Game",
 		"Are you sure you want to <cg>restart</c>?",
 		"Cancel", "Yes",
 		[](auto, bool btn2) {
 			if (btn2) {
-				utils::game::restart();
+				game::restart();
 			}
 		}
-	);
+	)->setID("restart-popup");
 }
 
-void reload(CCObject* sender) {
+void reload() {
+	if (CCDirector::get()->getRunningScene()->getChildByID("restart-popup")
+	|| CCDirector::get()->getRunningScene()->getChildByID("reload-popup")) return;
 	isReload = true;
 	geode::createQuickPopup(
 		"Reload Textures",
@@ -27,10 +31,9 @@ void reload(CCObject* sender) {
 		[](auto, bool btn2) {
 			if (btn2) {
 				GameManager::get()->reloadAll(false, false, true);
-				
 			}
 		}
-	);
+	)->setID("reload-popup");
 }
 
 class $modify(AltMenuLayer, MenuLayer) {
@@ -114,11 +117,11 @@ class $modify(AltMenuLayer, MenuLayer) {
 	}
 
 	void onRestart(CCObject* sender) {
-		restart(sender);
+		restart();
 	}
 
 	void onReload(CCObject* sender) {
-		reload(sender);
+		reload();
 	}
 };
 
@@ -130,16 +133,16 @@ class $modify(CCKeyboardDispatcher) {
 		if (Mod::get()->getSettingValue<bool>("keybind_anywhere")) {
 			if (!LevelEditorLayer::get()) {
 				if (key == enumKeyCodes::KEY_F1 && down)
-					restart(nullptr);
+					restart();
 				else if (key == enumKeyCodes::KEY_F2 && down)
-					reload(nullptr);
+					reload();
 			}
 		} else {
 			if (scene->getChildByID("MenuLayer")) {
 				if (key == enumKeyCodes::KEY_F1 && down)
-					restart(nullptr);
+					restart();
 				else if (key == enumKeyCodes::KEY_F2 && down)
-					reload(nullptr);
+					reload();
 			}
 		}
 
