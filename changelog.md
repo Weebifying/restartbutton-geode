@@ -1,4 +1,7 @@
 # Restart Buttons Changelog
+## v1.1.3
+- 2.206 support
+- Fixed an issue with popups stacking on each other using keybinds
 ## v1.1.2
 - Added an option to be able to use the keybinds from anywhere except the editor
 - Added mac support
