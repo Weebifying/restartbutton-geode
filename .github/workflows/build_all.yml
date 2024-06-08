@@ -14,10 +14,11 @@ jobs:
         config:
         - name: Windows
           os: windows-latest
+          target: Win32
 
         - name: macOS
           os: macos-latest
-
+          
         - name: Android32
           os: ubuntu-latest
           target: Android32
@@ -36,8 +37,10 @@ jobs:
         uses: geode-sdk/build-geode-mod@main
         with:
           bindings: weebifying/bindings
-          bindings-ref: main
+          build-config: RelWithDebInfo
+          export-pdb: true
           combine: true
+          sdk: 'nightly'
           target: ${{ matrix.config.target }}
 
   package:
