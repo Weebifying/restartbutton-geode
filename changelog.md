@@ -1,5 +1,8 @@
 # Restart Buttons Changelog
-## v1.1.3-beta1
+## v1.1.3-beta.2
+- Updated for Geode v3.0.0-alpha.2
+- Re-added macOS support
+## v1.1.3-beta.1
 - 2.206 support
 - Fixed an issue with popups stacking on each other using keybinds
 - Temporarily removed MacOS support
