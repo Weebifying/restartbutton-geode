@@ -9,4 +9,4 @@ You can change the size of the buttons, as well as toggling them in the mod sett
 On Windows you can use F1 for restart and F2 for reload textures as keybinds
 
 ## Special Thanks to:
-- Prevter, for testing this mod on MacOS for me! :D
+- Prevter and ninXout, for testing this mod on MacOS for me! :D
