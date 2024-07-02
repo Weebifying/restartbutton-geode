@@ -105,7 +105,7 @@ class $modify(AltMenuLayer, MenuLayer) {
 				rel_spr, 
 				this, 
 				menu_selector(AltMenuLayer::onReload));
-			rel_btn->setID("restart-button");
+			rel_btn->setID("reload-button");
 			menu->addChild(rel_btn);
 		}
 

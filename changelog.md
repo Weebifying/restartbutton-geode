@@ -1,4 +1,6 @@
 # Restart Buttons Changelog
+## v1.1.4
+- I'm silly.
 ## v1.1.3
 - Updated for Geode v3.0.0-beta.1
 ## v1.1.3-beta.2
