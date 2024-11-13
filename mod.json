@@ -1,17 +1,19 @@
 {
-	"geode": "3.1.1",
+	"geode": "4.0.0-alpha.1",
 	"gd": {
-		"win": "2.206",
-		"android": "2.206",
-		"mac": "2.206"
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074"
 	},
-	"version": "v1.1.4",
+	"version": "v1.2.0",
 	"id": "weebify.restartbtn",
 	"name": "Restart Buttons",
 	"developer": "Weebify",
-	"description": "Adds a button to quickly restart the game (and a few more)",
-	"repository": "https://github.com/Weebifying/restartbutton-geode",
-	"tags": ["Interface", "Utility"],
+	"description": "Adds buttons to restart the game & more",
+	"tags": ["interface", "utility"],
+	"links": {
+		"source": "https://github.com/Weebifying/restartbutton-geode"
+	},
 	"resources": {
 		"sprites": [
 			"resources/image.png"

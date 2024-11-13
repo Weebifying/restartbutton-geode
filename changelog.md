@@ -1,4 +1,5 @@
-# Restart Buttons Changelog
+## v1.2.0
+- 2.2074 support
 ## v1.1.4
 - I'm silly.
 ## v1.1.3
