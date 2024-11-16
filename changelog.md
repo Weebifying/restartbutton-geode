@@ -1,5 +1,7 @@
+## v1.2.1
+- Updated for Geode 4.0.0-beta.1 and onwards
 ## v1.2.0
-- 2.2074 support
+- Updated for GD 2.2074
 ## v1.1.4
 - I'm silly.
 ## v1.1.3
