@@ -126,6 +126,7 @@ class $modify(AltMenuLayer, MenuLayer) {
 };
 
 
+#ifndef GEODE_IS_IOS
 class $modify(CCKeyboardDispatcher) {
 	bool dispatchKeyboardMSG(cocos2d::enumKeyCodes key, bool down, bool repeat) {
 		auto scene = CCDirector::get()->getRunningScene();
@@ -149,3 +150,4 @@ class $modify(CCKeyboardDispatcher) {
 		return CCKeyboardDispatcher::dispatchKeyboardMSG(key, down, repeat);
 	}
 };
+#endif
