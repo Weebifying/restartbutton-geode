@@ -1,3 +1,5 @@
+## v1.2.5
+- Updated for GD 2.2091
 ## v1.2.4
 - Fixed keybinds not working after Geode 5.0.0-beta.2
 ## v1.2.3

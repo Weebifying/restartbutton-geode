@@ -8,7 +8,7 @@ else()
 endif()
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
-project(geode-test VERSION 1.2.4)
+project(RestartButtons VERSION 1.2.5)
 
 # Set up the mod binary
 add_library(${PROJECT_NAME} SHARED
